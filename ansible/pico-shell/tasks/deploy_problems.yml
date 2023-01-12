@@ -9,6 +9,12 @@
     - "{{ deb_dir }}"
     - "{{ bundle_dir }}"
 
+- name: Uninstall markupsafe
+  shell: "yes | /picoCTF-env/bin/python3.7 -m pip uninstall markupsafe"
+
+- name: Reinstall markupsafe
+  shell: "yes | /picoCTF-env/bin/python3.7 -m pip install markupsafe==2.0.1"
+
 - name: Install problems
   command: "{{ virtualenv_dir }}/bin/shell_manager install {{ item }}"
   with_items: "{{ problem_source_dirs }}"

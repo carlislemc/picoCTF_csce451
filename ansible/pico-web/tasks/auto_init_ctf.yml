@@ -2,6 +2,18 @@
 # Task list to intitialize a competition by adding a global scorebaords and
 # optionally starting the event
 
+- name: Uninstall Jinja
+  shell: yes | /picoCTF-env/bin/pip3 uninstall jinja2
+
+- name: Reinstall Jinja
+  shell: yes | /picoCTF-env/bin/pip3 install jinja2==3.0.0
+
+- name: Uninstall itsdangerous
+  shell: yes | /picoCTF-env/bin/pip3 uninstall itsdangerous
+
+- name: Reinstall itsdangerous
+  shell: yes | /picoCTF-env/bin/pip3 install itsdangerous==2.0.1
+
 - name: Auto Initialize CTF
   shell:
     cmd: >

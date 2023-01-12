@@ -49,10 +49,10 @@ server {
     }
 
     {% if (enable_shell_proxy|bool) -%}
-    location ~ /problem/(\d+)$ {
+    location ~/problem/(\d+)$ {
         return 301 $scheme://{{ nginx_server_name }}/problem/$1/;
     }
-    location ~ /problem/(\d+)/?(.*) {
+    location ~/problem/(\d+)/?(.*) {
         set $port $1;
         set $path $2;
         proxy_pass http://127.0.0.1:$port/$path$is_args$args;
