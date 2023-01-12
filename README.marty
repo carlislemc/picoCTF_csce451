@@ -1,0 +1,1 @@
+J=4 M=8 WIP=192.168.2.52 SIP=192.168.2.53 SHELL_DISK_SIZE=50GB vagrant up --provision shell && J=2 M=8 WIP=192.168.2.52 SIP=192.168.2.53 vagrant up --provision web
