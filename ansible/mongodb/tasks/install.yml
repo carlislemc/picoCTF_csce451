@@ -2,10 +2,22 @@
 # Playbook that installs MongoDB and associated utilities
 # TODO: Consolidate mongodb tasks into web
 
-- name: Add apt key by id
-  apt_key:
-    keyserver: "{{mongodb_apt_keyserver}}"
-    id: "{{mongodb_apt_key_id}}"
+- name: Add apt key by id (1)
+  get_url:
+     url: https://pgp.mongodb.com/server-6.0.asc
+     dest: /tmp/server-6.0.asc
+     mode: 0755
+
+- name: Add apt key by id (2)
+  command: "gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor"
+  become: true
+  args:
+     stdin: "{{lookup('pipe', 'cat /tmp/server-6.0.asc') }}"
+     creates: /usr/share/keyrings/mongodb-server-6.0.gpg
+
+#  apt_key:
+#    keyserver: "{{mongodb_apt_keyserver}}"
+#    id: "{{mongodb_apt_key_id}}"
 
 - name: Add repository
   apt_repository:
