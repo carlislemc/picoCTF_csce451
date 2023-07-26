@@ -6,5 +6,30 @@
     name: "file://{{ pico_web_api_dir }}"
     virtualenv: "{{ virtualenv_dir }}"
     extra_args: "--upgrade"
+  ignore_errors: true
   notify:
     - restart gunicorn
+
+# source synced in common
+- name: Install picoCTF-web api from source attempt 2 
+  pip:
+    name: "file://{{ pico_web_api_dir }}"
+    virtualenv: "{{ virtualenv_dir }}"
+    extra_args: "--upgrade"
+  ignore_errors: true
+  notify:
+    - restart gunicorn
+- name: fix python DNS
+  command: "{{ virtualenv_dir}}/bin/python3 -m pip install dnspython==2.2.1"
+  args:
+     chdir: "/picoCTF/picoCTF-web"
+  become: true 
+
+- name: Reinstall picoCTF-web api
+  command: "{{ virtualenv_dir }}/bin/pip3 install -e ."
+  args:
+     chdir: "/picoCTF/picoCTF-web"
+  become: true 
+  notify:
+    - restart gunicorn
+
