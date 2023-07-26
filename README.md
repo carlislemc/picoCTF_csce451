@@ -42,7 +42,7 @@ two local virtual machines. You can read more about using `vagrant` in our
 ```
 git clone https://github.com/picoCTF/picoCTF.git
 cd picoCTF
-vagrant up
+J=4 M=8 WIP=192.168.2.52 SIP=192.168.2.53 SHELL_DISK_SIZE=50GB vagrant up  && J=2 M=8 WIP=192.168.2.52 SIP=192.168.2.53 vagrant up  web
 ```
 
 These commands perform the following:
