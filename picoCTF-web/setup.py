@@ -77,7 +77,7 @@ setup(
         "pymongo==3.9.0",
         "spur==0.3.21",
         "voluptuous==0.11.7",
-        "walrus==0.7.1",
+        "walrus==0.9.3",
         "werkzeug<=0.16.1"
     ],
     extras_require={

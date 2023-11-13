@@ -34,7 +34,7 @@ def get_conn():
             )
         except Exception as error:
             raise PicoException(
-                "Internal server error. " + "Please contact a system administrator.",
+                "Internal srver error. " + "Please contact a system administrator.",
                 data={"original_error": error},
             )
     return __redis["walrus"]

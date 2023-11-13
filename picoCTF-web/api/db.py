@@ -48,7 +48,7 @@ def get_conn():
             __connection = __client[conf["MONGO_DB_NAME"]]
         except PyMongoError as error:
             raise PicoException(
-                "Internal server error. Please contact a system adminstrator.",
+                error + "Internal server error. Please cntact a system adminstrator.",
                 data={"original_error": error},
             )
 
